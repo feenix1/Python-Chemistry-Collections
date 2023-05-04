@@ -1,6 +1,7 @@
 import os
 import pyparsing
 import periodictable as pt
+import prettytable
 import math
 
 def clear():
@@ -38,7 +39,7 @@ class BCATable:
   # table_view[1] before
   # table_view[2] change
   # table_view[3] after
-  table_view = [[],[],[],[]]
+  _table_view = [[],[],[],[]]
   
   def add_compound(compound, type):
     if string_to_formula(compound) == None:
@@ -53,8 +54,11 @@ class BCATable:
       return True
     else:
       return "Invalid type!"
+  
   def display():
-    # Display the BCA table somehow
+    displaytable = prettytable(BCATable._table_view[0])
+    displaytable.add_rows(BCATable._table_view[1:])
+    print(displaytable)
     return None
     
   
@@ -79,10 +83,13 @@ while (True):
   if command == ["help"]:
     print("")
     print("help - Displays this help message")
-    print("new - Creates a new BCA table, and deletes the current one")
-    print("set compound - Requires a compound and a reaction/product index. Sets a reactant or product in the reaction.")
-    print("set compound amount - Requires a  - Displays ")
-    print("view [index]- Displays the current BCA table")
+    print("new - Creates a new BCA table, and sets it as the current table")
+    print("select [index] - Selects the table at the index, setting it as the current table.")
+    print("duplicate [with_values] (index) - Duplicates the current table or the table at the index, and sets it as the current table.")
+    print("delete [index] - Deletes the table at the index.")
+    print("set [compound] [type] - Sets a reactant or product in the reaction of the current table.")
+    print("solve [compound] [amount] [unit] - Fills out the rest of the BCA table with the calculated values based on the given compound.")
+    print("view - Displays the current BCA table.")
     
     print("exit - Exits the program")
     print("")

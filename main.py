@@ -22,6 +22,7 @@ while True:
   print("")
   print("1 [Compound Converter]")
   print("2 [BCA Complete]")
+  print("3 [Molarity Calulator]")
   print("")
   toolIndex = input("Please select a tool to use: ")
   if toolIndex == "exit":
@@ -35,4 +36,6 @@ while True:
   if toolIndex == 1:
     exec(open("CompoundConverter.py", "r").read())
   if toolIndex == 2:
-    exec(open("BCAComplete.py", "r").read())
+    exec(open("BCA Complete.py", "r").read())
+  if toolIndex == 3:
+    exec(open("Molarity Calculator.py", "r").read())
